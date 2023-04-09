@@ -1,7 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import 'dotenv/config';
 import { v4 as uuidv4 } from 'uuid';
-const slugify = require('slugify');
 
 
 export const hashString = async (plainPassword: string): Promise<string> => {
@@ -16,6 +15,7 @@ export const compareHash = async (plainText: string, hash: string) => {
 }
 
 export const sluggify = async (sluggifiable: string) => {
+  const slugify = require('slugify');
   return slugify(sluggifiable, {
     replacement: process.env.SLUG_STRINGS_REPLACEMENT,
     remove: /[*+~.,()\/\\'"!:@]/g,
