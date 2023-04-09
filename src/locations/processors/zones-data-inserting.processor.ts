@@ -1,4 +1,4 @@
-import { Process, Processor, OnQueueCompleted, OnQueueFailed } from '@nestjs/bull';
+import { Process, Processor } from '@nestjs/bull';
 import { Logger } from '@nestjs/common';
 import { Job } from 'bull';
 import { DepartmentService } from '../services/department.service';
@@ -14,20 +14,10 @@ export class ZonesDataProcessor {
 
     @Process('zonesDataInserting')
     async handleZonesDataInserting(job: Job): Promise<any> {
+        console.log("started inserting data")
         let result = await this.departmentService.insertZonesData();
+        console.log("done inserting data")
         return result;
-    }
-    
-    @OnQueueCompleted({ name: "zonesDataInserting" })
-    async onZonesDataInsertingCompleted(job: Job, result: any): Promise<any> {
-        this.logger.debug(`Processing completed`);
-        return;
-    }
-
-    @OnQueueFailed({ name: "zonesDataInserting" })
-    async onZonesDataInsertingFailed(job: Job, error: any): Promise<any> {
-        this.logger.debug(`Processing crashed`);
-        return;
     }
 
 }
