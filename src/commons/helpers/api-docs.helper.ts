@@ -11,11 +11,11 @@ const swaggerDocsOptions = new DocumentBuilder()
   .setDescription('This is the documentation for the BJ LOCATIONS REST API')
   .setVersion('1.0')
   .addBearerAuth()
-  .setContact("THE NERONE TEAM", "https://www.dev.metatronicx.com", "noreply@metatronicx.com")
+  .setContact("Metatronicx", "https://www.dev.metatronicx.com", "noreply@metatronicx.com")
   .build();
 
 const redocliDocsOptions: RedocOptions = {
-  title: 'AXIGBE SYSTEM REST API',
+  title: 'BJ LOCATIONS REST API',
   sortPropsAlphabetically: true,
   hideDownloadButton: false,
   hideHostname: false

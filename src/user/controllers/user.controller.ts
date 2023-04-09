@@ -1,15 +1,13 @@
 import { Body, Controller, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { User } from '../entities/user.entity';
 import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { ApiTags } from '@nestjs/swagger';
 import { Accessible } from '../../commons/decorators/accessible.decorator';
-import { Request } from 'express';
 import { AuthenticateUserDto, CreateUserDto, UpdateUserDto } from '../dtos/request.dto';
 
 @Controller("users")
-@ApiTags("USER")
+@ApiTags("USER & AUTH")
 export class UserController {
 
   constructor(
