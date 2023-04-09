@@ -2,7 +2,6 @@ import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, ForbiddenEx
 import { Request, Response } from 'express';
 import { QueryFailedError, EntityNotFoundError, CannotCreateEntityIdMapError } from 'typeorm';
 import { ValidationError } from 'class-validator';
-import { ForbiddenError } from '@casl/ability';
 
 
 @Catch()
@@ -46,11 +45,6 @@ export class AppExceptionFilter implements ExceptionFilter {
             case QueryFailedError:
                 status = HttpStatus.UNPROCESSABLE_ENTITY
                 message = (exception as QueryFailedError).message;
-                code = (exception as any).code;
-                break;
-            case ForbiddenError:
-                status = HttpStatus.FORBIDDEN
-                message = (exception as ForbiddenException).message;
                 code = (exception as any).code;
                 break;
             case Error:
