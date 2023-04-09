@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gray Card First Face</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter;
+}
+
+.row-card {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+}
+
+.justify-between-card {
+  justify-content: space-between;
+}
+
+.justify-center-card {
+  justify-content: center;
+}
+
+.item-start-card {
+  align-items: start;
+}
+.item-center-card {
+  align-items: center;
+}
+.item-end-card {
+  align-items: end;
+}
+
+.text-start-card {
+  text-align: start;
+}
+.text-center-card {
+  text-align: center;
+}
+.text-end-card {
+  text-align: end;
+}
+.text-primary-card {
+  color: #0a3764;
+}
+
+.title-card {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.subtitle-card {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.serie {
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0a3764;
+}
+
+.subtitle-serie {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 7px;
+}
+
+.mw-150-card {
+  max-width: 168px;
+  min-width: 168px;
+}
+
+.col-card {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+.sub-card {
+    min-width: 500px;
+    max-width: 500px;
+    margin-right: 10px;
+}
+
+.capital {
+  text-transform: uppercase;
+}
+
+#card {
+  background-image: url('Benin_card.png');
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+  background-color: #eee9da8a;
+  color: #000;
+  width: 600px;
+  height: 355px;
+  margin: auto;
+  padding: 10px;
+}
+
+.coat {
+  height: 28px;
+  object-fit: cover;
+}
+
+.flag {
+  height: 25px;
+  object-fit: cover;
+}
+
+.qr_code{
+  width: 70px;
+}
+
+    </style>
+</head>
+
+<body>
+    <section style="background-image: url('data:image/png;base64,{{ beninCard }}'); background-color: #eee9da8a; color: #000; background-position: center; background-repeat: no-repeat, repeat;" id="card">
+        <div class="row-card justify-between-card">
+            <div class="col-card">
+                <img class="coat" src="data:image/png;base64,{{ coatOfArmsB }}" alt="Coat_of_arms_of_Benin">
+            </div>
+            <div class="col-card text-center-card">
+                <h4 class="capital">République du bénin</h4>
+                <h6>Direction Générale des Transports Terrestres</h6>
+            </div>
+            <div class="col-card">
+                <img class="flag" src="data:image/png;base64,{{ flagBenin }}" alt="Flag_of_Benin">
+            </div>
+        </div>
+        
+        <div class="row-card justify-center-card">
+            <div class="col-card">
+                <h4 class="capital text-primary-card">Certificat d'immaticulation</h4>
+            </div>
+        </div>
+
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Numéro d'immatriculaton</p>
+                <p class="subtitle-card capital">BR 6598 RB</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Date</p>
+                <p class="subtitle-card capital">25/01/2019</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Date de 1 <sup>ère</sup> mise en circul</p>
+                <p class="subtitle-card capital">01/01/2010</p>
+            </div>
+        </div>
+        
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Nom</p>
+            <p class="subtitle-card capital">BOUSSARI</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Prénom</p>
+            <p class="subtitle-card capital">IBRAHIM ADEBAYO</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Numéro de carré/maison</p>
+                <p class="subtitle-card capital">M/BOUSSARI</p>
+            </div>
+        </div>
+        
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Quartier ou village</p>
+                <p class="subtitle-card capital">Ogani a nord</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Ville</p>
+                <p class="subtitle-card capital">Poto-novo</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Département</p>
+                <p class="subtitle-card capital">ouémé</p>
+            </div>
+        </div>
+        
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Profession</p>
+                <p class="subtitle-card capital">ingénieur génie</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Téléphone</p>
+                <p class="subtitle-card capital">61695987</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="serie">Série normale</p>
+                <p class="subtitle-serie">ANATT/2019/9501 &ensp; 25/04/2019 </p>
+            </div>
+        </div>
+        
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Genre</p>
+            <p class="subtitle-card capital">VOITURE PART.</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Marque</p>
+            <p class="subtitle-card capital">Mercedes</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Type</p>
+                <p class="subtitle-card capital">GGHB1/GLK3</p>
+            </div>
+        </div>
+        
+        <div class="row-card justify-between-card">
+            <div class="col-card mw-150-card">
+                <p class="title-card">Carrosserie</p>
+                <p class="subtitle-card capital">Conduite inter</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">Energie</p>
+                <p class="subtitle-card capital">Essence</p>
+            </div>
+            <div class="col-card mw-150-card">
+                <p class="title-card">N° de série du moteur</p>
+                <p class="subtitle-card capital">Illisible</p>
+            </div>
+        </div>
+      
+        <div class="row-card">
+            <div class="sub-card" >
+                <div class="row-card justify-between-card">
+                    <div class="col-card ">
+                        <p class="title-card">N° de série du châssis</p>
+                        <p class="subtitle-card capital">WDCGG8HB1AF313985</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">Puiss</p>
+                        <p class="subtitle-card capital">12</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">Place ass</p>
+                        <p class="subtitle-card capital">5</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">PT charge</p>
+                        <p class="subtitle-card capital">2 550</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">Poids à vide</p>
+                        <p class="subtitle-card capital">1 750</p>
+                    </div>
+                </div>
+                <div class="row-card justify-between-card">
+                    <div class="col-card ">
+                        <p class="title-card">Charge utile</p>
+                        <p class="subtitle-card capital">800</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">N° immt préc</p>
+                        <p class="subtitle-card capital">B9369068</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">Date immt préc</p>
+                        <p class="subtitle-card capital">07/05/2018</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">N° Advantage</p>
+                        <p class="subtitle-card capital">0495955 z</p>
+                    </div>
+                    <div class="col-card ">
+                        <p class="title-card">Couleur</p>
+                        <p class="subtitle-card capital">Creme</p>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <img class="qr_code" src="data:image/png;base64,{{ qrCode }}" alt="qr_code">
+            </div>
+        </div>
+        
+    </section>
+</body>
+
+</html>
