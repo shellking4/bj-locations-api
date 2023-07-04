@@ -20,6 +20,15 @@ import { join } from 'path';
 import { appLogger } from './commons/helpers/app-logger.helper';
 
 async function bootstrap() {
+
+  const AdminJSTypeorm = await import("@adminjs/typeorm");
+  const AdminJS = await import('adminjs');
+
+  AdminJS.default.registerAdapter({
+    Resource: AdminJSTypeorm.Resource,
+    Database: AdminJSTypeorm.Database,
+  })
+
   const appOptions = {
     cors: true,
     rawBody: true,
