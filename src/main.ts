@@ -18,24 +18,18 @@ import 'dotenv/config';
 import * as morgan from 'morgan';
 import { join } from 'path';
 import { appLogger } from './commons/helpers/app-logger.helper';
+import { setTupAdminJs } from './commons/helpers/adminjs.helper';
 
-async function bootstrap() {
-  const AdminJSTypeorm = await import("@adminjs/typeorm");
-  const AdminJS = await import('adminjs');
-  AdminJS.default.registerAdapter({
-    Resource: AdminJSTypeorm.Resource,
-    Database: AdminJSTypeorm.Database,
-  })
-  
+async function bootstrap() {  
   const appOptions = {
     cors: true,
     rawBody: true,
     bufferLogs: true,
     logger: appLogger,
   };
-  require('events').EventEmitter.defaultMaxListeners = Number.MAX_VALUE;
+
   process.env.TZ = 'Africa/Porto-Novo';
-  const app = await NestFactory.create<NestExpressApplication>(
+  let app = await NestFactory.create<NestExpressApplication>(
     AppModule,
     appOptions,
   );
@@ -54,6 +48,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  app = await setTupAdminJs(app);
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(morgan('tiny'));
