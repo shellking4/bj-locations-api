@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import axios from 'axios';
 import { image_upload_handler } from './upload-handler.helper';
 
 export default function TinyMCEComponent(props: any) {
@@ -9,11 +8,11 @@ export default function TinyMCEComponent(props: any) {
   const value = record.params?.[property.path]
 
   const handleUpdate = useCallback((newValue: string) => {
-    props.onChange(property.path, newValue)
+    onChange(property.path, newValue)
   }, []);
 
   return (<>
-    <label style={{ marginBottom: '10' }}>
+    <label>
       {property.label}
     </label>
     <Editor
@@ -43,10 +42,8 @@ export default function TinyMCEComponent(props: any) {
           const input = document.createElement('input');
           input.setAttribute('type', 'file');
           input.setAttribute('accept', '*/*');
-
           input.addEventListener('change', (e: any) => {
             const file = e.target.files[0];
-
             const reader: any = new FileReader();
             reader.addEventListener('load', () => {
               const id = 'blobid' + (new Date()).getTime();
