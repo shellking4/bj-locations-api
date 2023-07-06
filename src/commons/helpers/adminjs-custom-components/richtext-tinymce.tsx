@@ -37,26 +37,6 @@ export default function TinyMCEComponent(props: any) {
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
         automatic_uploads: true,
         images_upload_handler: image_upload_handler,
-        file_picker_types: 'file image media',
-        file_picker_callback: (callback, value, meta) => {
-          const input = document.createElement('input');
-          input.setAttribute('type', 'file');
-          input.setAttribute('accept', '*/*');
-          input.addEventListener('change', (e: any) => {
-            const file = e.target.files[0];
-            const reader: any = new FileReader();
-            reader.addEventListener('load', () => {
-              const id = 'blobid' + (new Date()).getTime();
-              const blobCache = editorRef.current.editorUpload.blobCache;
-              const base64 = reader?.result?.split(',')[1];
-              const blobInfo = blobCache.create(id, file, base64);
-              blobCache.add(blobInfo);
-              callback(blobInfo.blobUri(), { title: file.name });
-            });
-            reader.readAsDataURL(file);
-          });
-          input.click();
-        },
       }} />
   </>);
 }
