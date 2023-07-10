@@ -4,6 +4,9 @@ import { District } from 'src/locations/entities/district.entity'
 import { Neighborhood } from 'src/locations/entities/neighborhood.entity'
 import { Town } from 'src/locations/entities/town.entity'
 import { User } from 'src/user/entities/user.entity'
+import AdminJS, { ComponentLoader } from 'adminjs';
+import * as AdminJSTypeorm from '@adminjs/typeorm'
+import * as AdminJSExpress from '@adminjs/express'
 
 const DEFAULT_ADMIN = {
     email: 'admin@example.com',
@@ -18,8 +21,7 @@ const authenticate = async (email: string, password: string) => {
 }
 
 const loadAdminJSCustomComponents = async () => {
-    const AdminJS = await import('adminjs');
-    const componentLoader = new AdminJS.ComponentLoader();
+    const componentLoader = new ComponentLoader();
     const Components = {
         CkEditor: componentLoader.add('CkEditor', './adminjs-custom-components/richtext-ckeditor'),
         TinyMCE: componentLoader.add('TinyMCE', './adminjs-custom-components/richtext-tinymce'),
@@ -29,14 +31,11 @@ const loadAdminJSCustomComponents = async () => {
 
 
 export const setTupAdminJs = async (app: NestExpressApplication) => {
-    const AdminJSTypeorm = await import("@adminjs/typeorm");
-    const AdminJS = await import('adminjs');
-    const AdminJSExpress = await import('@adminjs/express');
-    AdminJS.default.registerAdapter({
+    AdminJS.registerAdapter({
         Resource: AdminJSTypeorm.Resource,
         Database: AdminJSTypeorm.Database,
     })
-    const admin = new AdminJS.default({
+    const admin = new AdminJS({
         rootPath: '/admin',
         resources: [
             User,
@@ -54,14 +53,27 @@ export const setTupAdminJs = async (app: NestExpressApplication) => {
                     }
                 }
             },
-            Town,
+            {
+                resource: Town,
+                options: {
+                    editProperties: ['name', 'department'],
+                    properties: {
+                        name: {
+                            type: 'richtext',
+                            components: {
+                                edit: (await loadAdminJSCustomComponents()).Components.TinyMCE
+                            }
+                        }
+                    }
+                }
+            },
             District,
             Neighborhood,
         ],
         componentLoader: (await loadAdminJSCustomComponents()).componentLoader
     });
     admin.watch()
-    const adminRouter = AdminJSExpress.default.buildAuthenticatedRouter(
+    const adminRouter = (AdminJSExpress as any).buildAuthenticatedRouter(
         admin,
         {
             authenticate,

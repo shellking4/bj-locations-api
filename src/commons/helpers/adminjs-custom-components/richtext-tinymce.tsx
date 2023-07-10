@@ -28,12 +28,12 @@ export default function TinyMCEComponent(props: any) {
         plugins: [
           'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'emoticons',
           'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen', 'preview',
-          'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount', 'fullscreen',
+          'insertdatetime', 'table', 'code', 'help', 'wordcount', 'fullscreen',
         ],
         toolbar: 'undo redo | blocks | ' +
           'bold italic forecolor | alignleft aligncenter ' +
           'alignright alignjustify | bullist numlist outdent indent | emoticons ' +
-          'removeformat | help | image | media | fullscreen | preview |',
+          'removeformat | help | image | fullscreen | preview |',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
         automatic_uploads: true,
         images_upload_handler: image_upload_handler,

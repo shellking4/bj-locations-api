@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, RelationId } from "typeorm";
 import { BaseEntity } from "../../database/ormconfigs/base.entity";
 import { Department } from "./department.entity";
 import { District } from "./district.entity";
@@ -16,6 +16,10 @@ export class Town extends BaseEntity {
         { onDelete: "SET NULL" })
     @JoinColumn({ name: "department_id" })
     departement: Department;
+
+    @RelationId((value: Town) => value.departement)
+    @Column({ name: 'department_id' })
+    department: string;
 
     @OneToMany(
         type => District, 
