@@ -48,10 +48,6 @@ import { BullModule } from '@nestjs/bull';
       provide: APP_GUARD,
       useClass: AuthNGuard,
     },
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: AuthZGuard,
-    // },
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
