@@ -9,12 +9,12 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './authstrategies/local.strategy';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './authstrategies/jwt.strategy';
-import { AddressModule } from 'src/locations/address.module';
+import { AddressModule } from 'src/location/address.module';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([
-            User
+            User,
         ]),
         PassportModule,
         JwtModule.registerAsync({

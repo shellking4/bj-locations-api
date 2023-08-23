@@ -4,26 +4,17 @@ import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { hashString } from 'src/commons/helpers/utils.helper';
 import { Logger } from '@nestjs/common';
-import {
-  OnGatewayInit,
-  WebSocketGateway,
-  WebSocketServer,
-} from '@nestjs/websockets';
-import { Server } from "socket.io"
 import { GetUserDto } from '../dtos/response.dto';
 import { CreateUserDto, UpdateUserDto } from '../dtos/request.dto';
 
 @Injectable()
-@WebSocketGateway({ cors: true })
-export class UserService implements OnGatewayInit {
+export class UserService {
 
   constructor(
     @InjectRepository(User)
     private readonly usersrepository: Repository<User>
   ) { }
 
-  @WebSocketServer()
-  websocketServer: Server;
 
   private logger: Logger = new Logger()
 

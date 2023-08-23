@@ -9,15 +9,12 @@ export class AuthNGuard extends AuthGuard('jwt') {
     constructor(private reflector: Reflector) {
         super();
     }
-
+    
     canActivate(context: ExecutionContext) {
         const isAccessible = this.reflector.get<boolean>(
             ACCESSIBLE,
             context.getHandler()
         );
-        if (isAccessible) {
-            return true;
-        }
-        return super.canActivate(context);
+        return isAccessible ? isAccessible : super.canActivate(context);
     }
 }

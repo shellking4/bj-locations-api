@@ -7,7 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { AppExceptionFilter } from './commons/helpers/exception-filter.helper';
 import { LoggingInterceptor } from './commons/helpers/logging-interceptor.helper';
-import { AddressModule } from './locations/address.module';
+import { AddressModule } from './location/address.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { appOrmConfig } from './database/ormconfigs/app-orm-config';
 import { AuthNGuard } from './user/guards/authn.guard';
@@ -48,10 +48,10 @@ import { BullModule } from '@nestjs/bull';
       provide: APP_GUARD,
       useClass: AuthNGuard,
     },
-    {
-      provide: APP_GUARD,
-      useClass: AuthZGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthZGuard,
+    // },
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,

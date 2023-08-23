@@ -21,10 +21,10 @@ const redocliDocsOptions: RedocOptions = {
   hideHostname: false
 };
 
-export const createApiDocumentation = async (app: INestApplication): Promise<INestApplication> => {
+export const createApiDocumentation = async (app: any): Promise<INestApplication> => {
   const document = SwaggerModule.createDocument(app, swaggerDocsOptions)
   fs.writeFileSync("./openapi-schema.json", JSON.stringify(document));
   SwaggerModule.setup(SWAGGER_DOCS_PATH, app, document);
   await RedocModule.setup(REDOCLY_DOCS_PATH, app, document, redocliDocsOptions);
-  return app
+  return app;
 }
