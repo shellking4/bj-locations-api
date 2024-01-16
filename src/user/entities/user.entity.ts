@@ -1,8 +1,8 @@
-import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
+import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../../database/ormconfigs/base.entity";
 
 
-@Entity("users")
+@Entity("users_")
 export class User extends BaseEntity {
 
     @Column({ unique: true })
