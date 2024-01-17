@@ -15,7 +15,7 @@ import { GetDepartmentByNameDto, GetDepartmentDistrictsDto, GetDepartmentNeighbo
 
 @Injectable()
 export class DepartmentService {
-
+    
     constructor(
         @InjectRepository(Department)
         private readonly departmentsRepository: Repository<Department>,

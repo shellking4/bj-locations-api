@@ -13,6 +13,7 @@ export class DepartmentController {
   ) { }
 
   @Get("insert-data")
+  @Accessible()
   async insertData() {
     return this.departmentService.insertZonesDataInBackground();
   }
